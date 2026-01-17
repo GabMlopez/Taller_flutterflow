@@ -1,7 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:google_fonts/google_fonts.dart'; // si lo usas en algún texto
 import '../styles/color_templates.dart';
-import 'package:provider/provider.dart';
 
 class HomePageWidget extends StatefulWidget {
   const HomePageWidget({super.key});

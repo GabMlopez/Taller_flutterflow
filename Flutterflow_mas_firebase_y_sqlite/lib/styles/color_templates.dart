@@ -19,13 +19,13 @@ class templateColors
         this.options
       })
   {
-    primary=this.primary ?? Colors.white;
-    secondary = this.secondary ?? Colors.grey[400];
-    bodyFontColor=this.bodyFontColor ?? Colors.black;
-    titleColor=this.titleColor ?? Colors.black;
-    highlight=this.highlight ?? Colors.grey[300];
-    menu=this.menu ?? Colors.grey[200];
-    options=this.options ?? Colors.grey[100];
+    primary= primary ?? Colors.white;
+    secondary = secondary ?? Colors.grey[400];
+    bodyFontColor=bodyFontColor ?? Colors.black;
+    titleColor=titleColor ?? Colors.black;
+    highlight=highlight ?? Colors.grey[300];
+    menu=menu ?? Colors.grey[200];
+    options=options ?? Colors.grey[100];
   }
 }
 

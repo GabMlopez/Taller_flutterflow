@@ -1,19 +1,43 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
+import 'package:provider/provider.dart';
 
-// Tus pantallas
+import '../pages/login.dart';
 import '../pages/home_page.dart';
+import '../pages/provider/user_provider.dart';
 import '../pages/samples_page.dart';
 import '../pages/chat_page.dart';
 import '../componentes/organism/bottom_bar.dart';
 import '../styles/color_templates.dart';
-final GlobalKey<NavigatorState> _rootNavigatorKey = GlobalKey<NavigatorState>();
-final templateColors colors = new templateColors();
-final GoRouter router = GoRouter(
 
+final GlobalKey<NavigatorState> _rootNavigatorKey =
+GlobalKey<NavigatorState>();
+
+final GoRouter router = GoRouter(
   navigatorKey: _rootNavigatorKey,
-  initialLocation: '/home',
+  initialLocation: '/login',
+
+  redirect: (context, state) {
+    final user = context.read<UserProvider>();
+    final isLogin = state.matchedLocation == '/login';
+
+    if (!user.isLogged && !isLogin) {
+      return '/login';
+    }
+
+    if (user.isLogged && isLogin) {
+      return '/home';
+    }
+
+    return null;
+  },
+
   routes: [
+    GoRoute(
+      path: '/login',
+      builder: (context, state) => const LoginPage(),
+    ),
+
     StatefulShellRoute.indexedStack(
       builder: (context, state, navigationShell) {
         return Scaffold(
@@ -29,33 +53,27 @@ final GoRouter router = GoRouter(
           routes: [
             GoRoute(
               path: '/home',
-              name: HomePageWidget.routeName,
               builder: (context, state) => const HomePageWidget(),
             ),
           ],
         ),
-
         StatefulShellBranch(
           routes: [
             GoRoute(
               path: '/samples',
-              name: 'samples',
               builder: (context, state) => const SamplesPageWidget(),
             ),
           ],
         ),
-
         StatefulShellBranch(
           routes: [
             GoRoute(
               path: '/chat',
-              name: 'chat',
               builder: (context, state) => const ChatPageWidget(),
             ),
           ],
         ),
       ],
     ),
-
   ],
 );

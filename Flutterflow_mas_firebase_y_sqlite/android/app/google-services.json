@@ -1,0 +1,67 @@
+{
+  "project_info": {
+    "project_number": "7956417264",
+    "project_id": "musica-33f87",
+    "storage_bucket": "musica-33f87.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:7956417264:android:2f8a98213948d2753cd035",
+        "android_client_info": {
+          "package_name": "com.example.flutterflow_taller"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCdAG7ERdaxNduSddcFwBvYJhWTFYExmvo"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:7956417264:android:466538af1ae559523cd035",
+        "android_client_info": {
+          "package_name": "com.music"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCdAG7ERdaxNduSddcFwBvYJhWTFYExmvo"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:7956417264:android:5244bff5aef1c81a3cd035",
+        "android_client_info": {
+          "package_name": "com.mycompany.music"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCdAG7ERdaxNduSddcFwBvYJhWTFYExmvo"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

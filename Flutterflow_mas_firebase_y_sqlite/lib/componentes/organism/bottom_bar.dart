@@ -22,7 +22,6 @@ class BottomBar extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final currentIndex = navigationShell.currentIndex;
 
     return Container(
       margin: const EdgeInsets.all(8),

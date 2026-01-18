@@ -1,13 +1,32 @@
 {
   "project_info": {
-    "project_number": "7956417264",
-    "project_id": "musica-33f87",
-    "storage_bucket": "musica-33f87.firebasestorage.app"
+    "project_number": "680259183126",
+    "project_id": "musical-bd",
+    "storage_bucket": "musical-bd.firebasestorage.app"
   },
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:7956417264:android:2f8a98213948d2753cd035",
+        "mobilesdk_app_id": "1:680259183126:android:38ff50ff34896b1a6b0b37",
+        "android_client_info": {
+          "package_name": "com.example.flutter_group_chat"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAztg_zCCPcLkOix0fdfZe5NiTMtEC5bko"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:680259183126:android:ffcd03e46505a9506b0b37",
         "android_client_info": {
           "package_name": "com.example.flutterflow_taller"
         }
@@ -15,45 +34,7 @@
       "oauth_client": [],
       "api_key": [
         {
-          "current_key": "AIzaSyCdAG7ERdaxNduSddcFwBvYJhWTFYExmvo"
-        }
-      ],
-      "services": {
-        "appinvite_service": {
-          "other_platform_oauth_client": []
-        }
-      }
-    },
-    {
-      "client_info": {
-        "mobilesdk_app_id": "1:7956417264:android:466538af1ae559523cd035",
-        "android_client_info": {
-          "package_name": "com.music"
-        }
-      },
-      "oauth_client": [],
-      "api_key": [
-        {
-          "current_key": "AIzaSyCdAG7ERdaxNduSddcFwBvYJhWTFYExmvo"
-        }
-      ],
-      "services": {
-        "appinvite_service": {
-          "other_platform_oauth_client": []
-        }
-      }
-    },
-    {
-      "client_info": {
-        "mobilesdk_app_id": "1:7956417264:android:5244bff5aef1c81a3cd035",
-        "android_client_info": {
-          "package_name": "com.mycompany.music"
-        }
-      },
-      "oauth_client": [],
-      "api_key": [
-        {
-          "current_key": "AIzaSyCdAG7ERdaxNduSddcFwBvYJhWTFYExmvo"
+          "current_key": "AIzaSyAztg_zCCPcLkOix0fdfZe5NiTMtEC5bko"
         }
       ],
       "services": {

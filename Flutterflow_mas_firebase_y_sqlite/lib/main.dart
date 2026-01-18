@@ -18,7 +18,7 @@ Future<void> main() async {
       MultiProvider(
         providers: [
           Provider<DatabaseService>.value(value: dbService),
-          ChangeNotifierProvider(create: (_) => UserProvider()),
+          ChangeNotifierProvider.value(value: userProvider),
         ],
         child: const MyApp(),
       ),

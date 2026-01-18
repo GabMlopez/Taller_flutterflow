@@ -69,6 +69,20 @@
                       ? const CircularProgressIndicator()
                       : const Text('Entrar'),
                 ),
+                const Text('¿No tienes cuenta? '),
+                TextButton(
+                  onPressed: () {
+                    print("intentando registrarse");
+                    context.go('/register');
+                  },
+                  child: const Text(
+                    'Regístrate aquí',
+                    style: TextStyle(
+                      fontWeight: FontWeight.bold,
+                      color: Colors.blue,
+                    ),
+                  ),
+                ),
               ],
             ),
           ),

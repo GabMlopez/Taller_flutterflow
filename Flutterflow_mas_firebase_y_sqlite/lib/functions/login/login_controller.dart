@@ -1,3 +1,4 @@
+import 'package:flutterflow_taller/Data/dataServices/user_service.dart';
 import 'package:flutterflow_taller/pages/provider/user_provider.dart';
 import 'package:flutter/material.dart';
 import 'package:mongo_dart/mongo_dart.dart';
@@ -5,6 +6,7 @@ import 'package:provider/provider.dart';
 
 import '../../controladores/mongo_connection.dart';
 import '../../Data/entities/usuario.dart';
+import '../../Data/entities/chat_user.dart';
 
 Future<bool> loginUser(
     BuildContext context, {
@@ -19,6 +21,7 @@ Future<bool> loginUser(
   print('   contrasenia: "$trimmedPass" (longitud: ${trimmedPass.length})');
 
   try {
+    final UserService serv = UserService();
     final dbService = context.read<DatabaseService>();
     final users = await dbService.collection('usuarios');
 
@@ -46,7 +49,9 @@ Future<bool> loginUser(
     final user = UserModel.fromMap(result);
     print('→ Usuario encontrado OK: ${user.usuario}');
 
-    context.read<UserProvider>().setUser(user);
+    ChatUser chatUser = await serv.getUserInfoByName(user.usuario);
+
+    context.read<UserProvider>().setUser(user, chatUser);
     return true;
   } catch (e, stack) {
     print('ERROR en loginUser: $e');

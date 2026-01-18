@@ -4,9 +4,14 @@ import 'package:provider/provider.dart';
 
 import './controladores/mongo_connection.dart';
 import './controladores/router.dart';
+import 'firebase_options.dart';
+import 'package:firebase_core/firebase_core.dart';
 
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
+  Firebase.initializeApp(
+      options: DefaultFirebaseOptions.currentPlatform
+  );
   try {
     final dbService = await DatabaseService.instance;
     runApp(

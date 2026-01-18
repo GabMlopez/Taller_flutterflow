@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
+import '../../Data/entities/group_chat.dart';
 import 'package:go_router/go_router.dart';
 import 'package:provider/provider.dart';
 
+import '../pages/chat_messages.dart';
 import '../pages/login.dart';
 import '../pages/home_page.dart';
 import '../pages/provider/user_provider.dart';
@@ -69,11 +71,26 @@ final GoRouter router = GoRouter(
           routes: [
             GoRoute(
               path: '/chat',
-              builder: (context, state) => const ChatPageWidget(),
+              builder: (context, state) => ChatPageWidget(),
             ),
           ],
-        ),
+        )
       ],
     ),
+    GoRoute(
+      path: '/chat/messages',
+      parentNavigatorKey: _rootNavigatorKey,
+      builder: (context, state) {
+        final extra = state.extra;
+
+        if (extra == null || extra is! GroupChat) {
+          return const Scaffold(
+            body: Center(child: Text('Chat inválido')),
+          );
+        }
+
+        return ChatMessages(chatInfo: extra);
+      },
+    )
   ],
 );

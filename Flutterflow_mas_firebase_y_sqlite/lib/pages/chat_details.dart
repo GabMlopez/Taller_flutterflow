@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutterflow_taller/Data/dataServices/chat_service.dart';
 import 'package:go_router/go_router.dart';
 
 class ChatDetailsWidget extends StatefulWidget {
@@ -9,7 +10,7 @@ class ChatDetailsWidget extends StatefulWidget {
 }
 
 class _ChatDetailsWidgetState extends State<ChatDetailsWidget> {
-
+  ChatService _service = ChatService();
   final scaffoldKey = GlobalKey<ScaffoldState>();
 
   @override

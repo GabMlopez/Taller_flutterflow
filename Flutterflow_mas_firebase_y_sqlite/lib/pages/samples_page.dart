@@ -203,14 +203,12 @@ class _SamplesPageWidgetState extends State<SamplesPageWidget> {
         floatingActionButton: FloatingActionButton(
           onPressed: () async {
             await uploadSample(context);
-            // Refresca la lista automáticamente después de subir
+
             setState(() {
               _samplesFuture = getSamples(context);
             });
           },
-          backgroundColor: const Color(0xFF0EB0BE),
-          tooltip: 'Subir nuevo sample',
-          child: const Icon(Icons.upload),
+          // ... resto del código
         ),
         floatingActionButtonLocation: FloatingActionButtonLocation.endFloat, // posición por defecto
       ),

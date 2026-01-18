@@ -3,6 +3,9 @@ import 'package:mongo_dart/mongo_dart.dart';
 import 'package:provider/provider.dart';
 
 import '../../controladores/mongo_connection.dart';
+double playbackSpeed = 1.0;
+String? currentSampleName;
+bool echoEnabled = false;
 
 Future<void> toggleFavorite(BuildContext context, Map<String, dynamic> sample) async {
   final dbService = context.read<DatabaseService>();
@@ -20,4 +23,16 @@ Future<void> toggleFavorite(BuildContext context, Map<String, dynamic> sample) a
       content: Text(newFavorite ? 'Agregado a favoritos' : 'Quitado de favoritos'),
     ),
   );
+}
+
+void updatePlaybackSpeed(double value) {
+  playbackSpeed = value;
+}
+
+void setCurrentSampleName(String name) {
+  currentSampleName = name;
+}
+
+void toggleEcho() {
+  echoEnabled = !echoEnabled;
 }

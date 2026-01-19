@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "680259183126",
+    "project_id": "musical-bd",
+    "storage_bucket": "musical-bd.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:680259183126:android:38ff50ff34896b1a6b0b37",
+        "android_client_info": {
+          "package_name": "com.example.flutter_group_chat"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAztg_zCCPcLkOix0fdfZe5NiTMtEC5bko"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

@@ -28,23 +28,23 @@ class ChatService {
     List <Map<String, dynamic>> chatMembers = List<Map<String, dynamic>>.from(chat.users);
     ChatUser user = await _userService.getUserInfoById(userId);
     if(user != null)
-      {
-          try {
-            chatMembers.add({
-              "uid" : user.id,
-              "username":user.username
-            });
-            await repository.updateChat(chatId, {"users":chatMembers});
-            return true;
-          }catch(e)
-          {
-            return false;
-          }
-      }
-      else
+    {
+      try {
+        chatMembers.add({
+          "uid" : user.id,
+          "username":user.username
+        });
+        await repository.updateChat(chatId, {"users":chatMembers});
+        return true;
+      }catch(e)
       {
         return false;
       }
+    }
+    else
+    {
+      return false;
+    }
 
   }
 
@@ -69,3 +69,4 @@ class ChatService {
     return  messageRepo.getMessages(chatId);
   }
 }
+

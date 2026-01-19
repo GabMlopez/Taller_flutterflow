@@ -45,10 +45,19 @@ class _ChatPageState extends State<ChatMessages> {
   }
 
 
-  void enterChat ()async
-  {
-    if (userData == null) return;
-    await _chatService.addUserToChat(chatInfo.id, userData!.id);
+  void enterChat ()async {
+    ChatUser userData=Provider.of<UserProvider>(context, listen: false).chat_user!;
+    List<Map<String, dynamic>> chatMembers=chatInfo.users;
+    bool userAlreadyInChat = false;
+    if(chatMembers.isNotEmpty)
+    {
+      for(var member in chatMembers)
+      {
+        if(member['uid']==userData.id)
+        { userAlreadyInChat=true; }
+      }
+    } if(!userAlreadyInChat)
+    { await _chatService.addUserToChat(chatInfo.id, userData.id); }
   }
 
   void _sendMessage() async{
@@ -87,7 +96,7 @@ class _ChatPageState extends State<ChatMessages> {
             return CircularProgressIndicator();
           }
         }
-          );
+    );
   }
 
   Widget _buildMessageItem(Message messageData){
@@ -96,28 +105,28 @@ class _ChatPageState extends State<ChatMessages> {
     String displayName = (_currentUserMessage) ? "Tú" : chatInfo.getMemberName(messageData.user);
 
     return (
-      Container(
-        alignment: alignment,
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            Text(displayName, style: TextStyle(
-              fontWeight: FontWeight.bold,
-            ),),
-            Container(
-              padding: EdgeInsets.all(10),
-              decoration: BoxDecoration(
-                color: (_currentUserMessage) ? Colors.lightBlueAccent : Colors.lightGreenAccent,
-                borderRadius: BorderRadius.circular(10),
-              ),
-              child: Text(messageData.content),
-            )
-          ],
-        ),
-      )
+        Container(
+          alignment: alignment,
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              Text(displayName, style: TextStyle(
+                fontWeight: FontWeight.bold,
+              ),),
+              Container(
+                padding: EdgeInsets.all(10),
+                decoration: BoxDecoration(
+                  color: (_currentUserMessage) ? Colors.lightBlueAccent : Colors.lightGreenAccent,
+                  borderRadius: BorderRadius.circular(10),
+                ),
+                child: Text(messageData.content),
+              )
+            ],
+          ),
+        )
     );
   }
-  
+
   Widget _buildMessageInput(){
     return Row(
       children: [
@@ -153,21 +162,15 @@ class _ChatPageState extends State<ChatMessages> {
       );
     }
     return Scaffold(
-      appBar: AppBar(
-        title: Text(chatInfo.name),
-      ),
-      body: Column(
-        children : [
-          Expanded(child: _buildMessageList()),
-          _buildMessageInput(),
-        ]
-      )
+        appBar: AppBar(
+          title: Text(chatInfo.name),
+        ),
+        body: Column(
+            children : [
+              Expanded(child: _buildMessageList()),
+              _buildMessageInput(),
+            ]
+        )
     );
   }
 }
-
-
-
-
-
-

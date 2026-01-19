@@ -1,10 +1,10 @@
-# flutterflow_taller
+# Aplicación de Mixer multiusuario
 
-A new Flutter project.
+Esta aplicación permite subir archivos de audio, modificarlas y guardar tus mixes personalizados online u offline.
 
-## Getting Started
+## Ingresar a la Aplicación
 
-This project is a starting point for a Flutter application.
+Al abrir la aplicación, se ingresa 
 
 A few resources to get you started if this is your first Flutter project:
 

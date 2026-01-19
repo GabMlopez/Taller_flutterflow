@@ -6,35 +6,35 @@ class ChatRepository {
 
   Stream<List<GroupChat>> getChats() {
     return fireDB.collection("project_chats").orderBy("lastMessageTimestamp", descending: true)
-    .snapshots().asyncMap(
-        (query) async
-            {
-              List<GroupChat> chats = [];
-              for (var chat in query.docs) {
-                CollectionReference messageList=fireDB.collection("project_chats").doc(chat.id).collection("messages");
-                QuerySnapshot messagesData=await messageList.get();
-                List<Message> messages = messagesData.docs.map((message) {
-                  return Message(
-                    id: message.id,
-                    content: message['content'],
-                    timestamp: message['timestamp'],
-                    user: message['user'],
-                    status: message['status'],
-                  );
-                }).toList();
-                chats.add(
-                    new GroupChat(id: chat.id,
-                        projectId: chat['project'],
-                        name: chat['name'],
-                        users: List<Map<String, dynamic>>.from(chat['users']),
-                        messages: messages,
-                        lastMessage: chat['lastMessage'],
-                        lastMessageTimestamp: chat['lastMessageTimestamp'],
-                        lastMessageSender: chat['lastMessageSender'])
-                );
-              }
-              return chats;
-            }
+        .snapshots().asyncMap(
+            (query) async
+        {
+          List<GroupChat> chats = [];
+          for (var chat in query.docs) {
+            CollectionReference messageList=fireDB.collection("project_chats").doc(chat.id).collection("messages");
+            QuerySnapshot messagesData=await messageList.get();
+            List<Message> messages = messagesData.docs.map((message) {
+              return Message(
+                id: message.id,
+                content: message['content'],
+                timestamp: message['timestamp'],
+                user: message['user'],
+                status: message['status'],
+              );
+            }).toList();
+            chats.add(
+                new GroupChat(id: chat.id,
+                    projectId: chat['project'],
+                    name: chat['name'],
+                    users: List<Map<String, dynamic>>.from(chat['users']),
+                    messages: messages,
+                    lastMessage: chat['lastMessage'],
+                    lastMessageTimestamp: chat['lastMessageTimestamp'],
+                    lastMessageSender: chat['lastMessageSender'])
+            );
+          }
+          return chats;
+        }
     );
   }
 
@@ -96,6 +96,3 @@ class ChatRepository {
     }
   }
 }
-
-
-

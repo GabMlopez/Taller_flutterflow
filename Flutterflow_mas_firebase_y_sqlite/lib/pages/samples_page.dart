@@ -208,7 +208,7 @@ class _SamplesPageWidgetState extends State<SamplesPageWidget> {
               _samplesFuture = getSamples(context);
             });
           },
-          // ... resto del código
+          child: Icon(Icons.upload_sharp),
         ),
         floatingActionButtonLocation: FloatingActionButtonLocation.endFloat, // posición por defecto
       ),

@@ -42,7 +42,6 @@ Future<bool> loginUser(
 
       final primerDoc = await users.findOne(); // sin filtro
       print('Primer documento cualquiera (si existe): $primerDoc');
-      print(await users.find().toList());
 
       return false;
     }

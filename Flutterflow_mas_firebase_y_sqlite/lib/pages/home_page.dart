@@ -1,5 +1,8 @@
 import 'package:flutter/material.dart';
 import '../styles/color_templates.dart';
+import '../functions/samples/play_sample.dart';
+import '../functions/samples/toggle_sample.dart';
+import 'provider/globar_player.dart';
 
 class HomePageWidget extends StatefulWidget {
   const HomePageWidget({super.key});
@@ -24,6 +27,72 @@ class _HomePageWidgetState extends State<HomePageWidget> {
   void dispose() {
     super.dispose();
   }
+
+  Widget _buildSpeedControl() {
+    return Padding(
+      padding: const EdgeInsets.all(16.0),
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          const Text(
+            'Velocidad de reproducción',
+            style: TextStyle(
+              fontSize: 16,
+              fontWeight: FontWeight.bold,
+            ),
+          ),
+          Slider(
+            value: playbackSpeed,
+            min: 0.5,
+            max: 1.5,
+            divisions: 4,
+            label: '${playbackSpeed.toStringAsFixed(1)}x',
+            onChanged: (value) {
+              setState(() {
+                playbackSpeed = value;
+              });
+
+              updatePlaybackSpeed(value);
+              setPlaybackSpeed(value);
+            },
+          ),
+          const SizedBox(height: 12),
+          Row(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            children: [
+              const Text(
+                'Eco',
+                style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
+              ),
+              Switch(
+                value: echoEnabled,
+                onChanged: (value) async {
+                  setState(() {
+                    toggleEcho();
+                  });
+
+                  if (echoEnabled) {
+                    await enableEcho();
+                  } else {
+                    await disableEcho();
+                  }
+                },
+              ),
+            ],
+          ),
+          /*Text(
+            currentSampleName ?? 'Ninguna pista reproduciéndose',
+            style: TextStyle(
+              fontSize: 18,
+              fontWeight: FontWeight.bold,
+              color: currentSampleName == null ? Colors.grey : Colors.black,
+            ),
+          ),*/
+        ],
+      ),
+    );
+  }
+
 
   @override
   Widget build(BuildContext context) {
@@ -63,7 +132,9 @@ class _HomePageWidgetState extends State<HomePageWidget> {
                     child: SingleChildScrollView(
                       child: Column(
                         mainAxisSize: MainAxisSize.max,
-                        children: const [], // Aquí van tus widgets de home (ej: cards, sliders, etc.)
+                        children: [
+                          _buildSpeedControl(),
+                        ], // Aquí van tus widgets de home (ej: cards, sliders, etc.)
                       ),
                     ),
                   ),

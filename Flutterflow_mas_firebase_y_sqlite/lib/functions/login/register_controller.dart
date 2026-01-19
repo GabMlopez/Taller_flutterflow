@@ -1,4 +1,4 @@
-import 'package:flutterflow_taller/Data/dataServices/user_service.dart';
+import '../../Data/dataServices/user_service.dart';
 import 'package:mongo_dart/mongo_dart.dart';
 import '../../controladores/mongo_connection.dart';
 
